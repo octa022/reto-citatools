@@ -1,0 +1,45 @@
+<div class="container" *ngIf="list$ | async as list">
+  <div class="row">
+    <div class="col-12 col-title">
+      <h1 class="text-primary">Listado de citas</h1>
+
+      <div class="col-btn-mode">
+        <button type="button" class="btn btn-outline-primary btn-icon" (click)="modalCita()"
+          placement="top" ngbTooltip="Crear" container="body">
+          <i class="fa-solid fa-plus"></i>
+        </button>
+        <button type="button" class="btn btn-outline-primary btn-icon" (click)="modeChange()">
+          <span *ngIf="grid; else elseTemplate" placement="top" ngbTooltip="Lista" container="body">
+            <i class="fas fa-bars"></i>
+          </span>
+          <ng-template #elseTemplate>
+            <span placement="top" ngbTooltip="Bloque" container="body"> <i class="fas fa-th-large"></i> </span>
+          </ng-template>
+        </button>
+      </div>
+    </div>
+
+    <div class="col-12 col-articles">
+
+      <div class="articles" [ngClass]="{'list-mode': !grid, 'card-mode': grid }">
+        <ng-container *ngFor="let item of list | slice: (page-1) * pageSize : page * pageSize">
+          <app-tipo-cita
+            [grid]="grid"
+            [medical]="item"
+            (edit)="editModal($event)"
+            (delete)="deleteModal($event)"
+          >
+          </app-tipo-cita>
+        </ng-container>
+      </div>
+
+      <div class="d-flex justify-content-end mt-3" *ngIf="list.length > pageSize">
+        <ngb-pagination
+          [(page)]="page"
+          [pageSize]="pageSize"
+          [collectionSize]="list.length"></ngb-pagination>
+      </div>
+
+    </div>
+  </div>
+</div>

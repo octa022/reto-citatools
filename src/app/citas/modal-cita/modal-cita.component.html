@@ -1,0 +1,85 @@
+<div class="modal-cita">
+  <div class="modal-header">
+    <h5 class="modal-title">
+      <i class="fa-solid fa-user-doctor me-2"></i>
+      <ng-container *ngIf="isnew">Crear Cita</ng-container>
+      <ng-container *ngIf="!isnew">Editar Cita</ng-container>
+    </h5>
+    <button type="button" class="btn btn-outline-primary" aria-label="Close"  (click)="activeModal.dismiss('Cross click')">
+      <i class="fa-solid fa-circle-xmark"></i>
+    </button>
+  </div>
+
+  <div class="modal-body">
+    <form [formGroup]="form" class="row">
+      <div class="col-12">
+
+        <div class="form-check form-switch mb-3">
+          <input formControlName="active" class="form-check-input" type="checkbox" role="switch" id="activar">
+          <label class="form-check-label" for="activar">Activar cita</label>
+        </div>
+
+        <div class="form-floating mb-3">
+          <input formControlName="name" type="text" class="form-control" id="nombre" placeholder="Nombre de cita">
+          <label for="nombre">Nombre</label>
+          <div
+            class="alert alert-danger"
+            role="alert"
+            *ngIf="form.get('name')?.errors && showErrors"
+          >
+            <span *ngIf="form.get('name')?.hasError('required')">
+              Opps, olvidaste Nombre del tipo de cita.
+            </span>
+          </div>
+        </div>
+
+        <div class="form-floating mb-3">
+          <input formControlName="description" type="text" class="form-control" id="descripcion" placeholder="Descripción de cita">
+          <label for="descripcion">Descripción</label>
+        </div>
+
+        <div class="form-floating mb-3">
+          <input formControlName="duration" type="number" class="form-control" id="duracion" placeholder="Duración de cita" min="0" max="240">
+          <label for="duracion">Duración</label>
+          <div
+            class="alert alert-danger"
+            role="alert"
+            *ngIf="form.get('duration')?.errors && showErrors"
+          >
+            <span *ngIf="form.get('duration')?.hasError('required')">
+              Opps, olvidaste Duración.
+            </span>
+            <span *ngIf="form.get('duration')?.hasError('max')">
+              Opps, La Duración no puede exceder los 240minutos (4 horas).
+            </span>
+          </div>
+        </div>
+
+        <div class="form-floating custom mb-3">
+          <input
+            formControlName="color"
+            class="form-control w-100"
+            [(colorPicker)]="color"
+            [style.background]="color"
+          />
+          <label for="Color">Color</label>
+        </div>
+
+      </div>
+    </form>
+
+  </div>
+
+  <div class="modal-footer p-0">
+    <div class="w-100 d-flex justify-content-end px-3">
+      <button type="button" class="btn btn-primary me-3" (click)="save()">Guardar</button>
+      <button type="button" class="btn btn-light" (click)="activeModal.dismiss('Cross click')">
+        Cancelar
+      </button>
+    </div>
+    <div class="modal-footer-message">
+      <i class="fa-solid fa-heart-pulse"></i> CitaTools
+    </div>
+  </div>
+</div>
+<!-- / .modal-cita -->

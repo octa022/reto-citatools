@@ -1,0 +1,22 @@
+.navbar{
+  padding-top: 0;
+  padding-bottom: 0;
+  border-bottom: 6px solid var(--bs-primary);
+  .navbar-brand{
+    &.logo {
+      img {
+        max-height: 50px;
+        object-position: center;
+      }
+    }
+  }
+  .navbar-collapse {
+    .nav-item {
+      text-align: center;
+      color: var(--bs-primary);
+      font-size: 16px;
+      font-style: italic;
+      font-weight: bold;
+    }
+  }
+}

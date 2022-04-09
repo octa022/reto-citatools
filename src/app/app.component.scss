@@ -1,0 +1,18 @@
+.container-fluid {
+  min-height: calc( 100% - 88px);
+  display: flex;
+  .row {
+    flex: 1;
+    padding-bottom: 3rem;
+  }
+}
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 4;
+  background-color: rgb(223, 223, 223);
+  color: white
+}

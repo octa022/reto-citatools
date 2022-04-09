@@ -1,0 +1,35 @@
+<article  [ngClass]="{'list-mode': !grid, 'card-mode': grid }">
+  <div class="article-container"  [ngStyle]="{'background-color': medical.color}">
+    <div>
+      <strong>Nombre:&nbsp;</strong>
+      {{medical.name}}
+      <span class="item-activate" *ngIf="medical.active">
+        Activo
+      </span>
+    </div>
+    <div>
+      <strong>Descripción:&nbsp;</strong>
+      {{medical.description}}
+    </div>
+    <div>
+      <strong>Duración:&nbsp;</strong>
+      {{medical.duration}} min
+    </div>
+    <div>
+      <strong>Fecha creación:&nbsp;</strong>
+      {{medical.createAt}}
+    </div>
+    <div>
+      <strong>Fecha edición:&nbsp;</strong>
+      {{medical.updateAt}}
+    </div>
+  </div>
+  <div class="container-btns-floating" [ngClass]="{ 'item-activate' : medical.active }">
+    <button class="btn btn-light btn-floating" (click)="editMedicalAppointment()">
+      <i class="fa-solid fa-pen-clip"></i>
+    </button>
+    <button class="btn btn-light btn-trash btn-floating" (click)="deleteMedicalAppointment()">
+      <i class="fa-solid fa-trash-can"></i>
+    </button>
+  </div>
+</article>
