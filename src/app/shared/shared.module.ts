@@ -6,18 +6,21 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
 import { NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap';
 import { MocalConfirmationComponent } from './mocal-confirmation/mocal-confirmation.component';
+import { SimpleSearchPipe } from './pipe/simple-search.pipe';
 
 
 @NgModule({
   declarations: [
     NavbarComponent,
     FooterComponent,
-    MocalConfirmationComponent
+    MocalConfirmationComponent,
+    SimpleSearchPipe
   ],
   exports: [
     NavbarComponent,
     FooterComponent,
-    MocalConfirmationComponent
+    MocalConfirmationComponent,
+    SimpleSearchPipe
   ],
   imports: [
     CommonModule,

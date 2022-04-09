@@ -17,6 +17,10 @@ export class CitasComponent {
   page    : number = 1;
   pageSize: number = 8;
   /**
+   * Filter Field by name
+   */
+  filterByName: string = ''
+  /**
    * Stream: List of Medical Appointments
    */
   list$: Observable<MedicalAppointment[]>;

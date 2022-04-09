@@ -21,8 +21,22 @@
 
     <div class="col-12 col-articles">
 
+      <div class="row">
+        <div class="col-md-auto col-sm-12 ms-auto">
+          <div class="form-floating mb-3">
+            <input type="text"
+            class="form-control " id="buscar"
+            placeholder="Buscar cita por nombre"
+            [(ngModel)]="filterByName"
+            name="filterByName">
+            <label for="buscar">Buscar cita por nombre</label>
+          </div>
+        </div>
+        <hr>
+      </div>
+
       <div class="articles" [ngClass]="{'list-mode': !grid, 'card-mode': grid }">
-        <ng-container *ngFor="let item of list | slice: (page-1) * pageSize : page * pageSize">
+        <ng-container *ngFor="let item of list | slice: (page-1) * pageSize : page * pageSize  | simpleSearch: filterByName">
           <app-tipo-cita
             [grid]="grid"
             [medical]="item"
@@ -31,6 +45,14 @@
           >
           </app-tipo-cita>
         </ng-container>
+      </div>
+
+      <div class="row" *ngIf="list.length <= 0">
+        <div class="col-12 my-5">
+          <p class="text-center text-black-50">
+            No tiene citas disponibles.
+          </p>
+        </div>
       </div>
 
       <div class="d-flex justify-content-end mt-3" *ngIf="list.length > pageSize">

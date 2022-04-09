@@ -10,7 +10,6 @@ import { TipoCitaComponent } from './tipo-cita/tipo-cita.component';
 import { ModalCitaComponent } from './modal-cita/modal-cita.component';
 import { SharedModule } from '../shared/shared.module';
 
-
 @NgModule({
   declarations: [
     CitasComponent,
